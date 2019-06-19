@@ -1,6 +1,7 @@
 package vn.linhpv.androiddragrecyclerview
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -39,6 +40,13 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 }
+
+                // on drag and drop end https://stackoverflow.com/questions/37425494/recyclerview-itemtouchhelper-action-drag-ended/37426257
+                override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
+                    super.clearView(recyclerView, viewHolder)
+                    Log.i("TAG", "clearView: on Draw and Drop end")
+                }
+
             })
         itemTouchHelper.attachToRecyclerView(recycler_users)
     }
